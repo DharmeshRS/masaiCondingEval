@@ -31,7 +31,7 @@
     <div>
         <h1>Login</h1>
         <div>
-            <form action="" onsubmit="login()">
+            <form action="" onsubmit="login(event)" id="login_form">
                 <label for="">Username</label>
                 <input type="text" id="username"><br>
                 <label for="">Password</label>
@@ -43,7 +43,37 @@
     </div>
     </body>
     <script>
+         e.preventDefault()
+        let form=document.getElementById("login_form")
+    var user_data={
+       
+        password:form.password.value,
+        username:form.username.value,
+        
+    };
+    console.log(user_data)
+    
+    user_data=JSON.stringify(user_data)
+    fetch("https://masai-api-mocker.herokuapp.com/auth/login",{
+        method:"POST",
+        body:user_data,
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
 
+    .then((res)=>{
+        return res.json()
+    })
+    .then((res)=>{
+        console.log(res)
+        alert(res.message)
+        if(res.error=="false"){
+            window.location.href="menu.html"
+        }
+        
+    })
+}
     </script>
 
 </html>
