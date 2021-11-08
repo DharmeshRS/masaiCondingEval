@@ -16,6 +16,12 @@
             padding-right: 100px;
             margin: auto;
         }
+        #show{
+            display: flex;
+        }
+        img{
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -28,9 +34,50 @@
         </div>
         <hr>
     </div>
+    <div id="show"></div>
+
+    <div><button onclick="proceed()">Proceed</button></div>
     </body>
     <script>
+        let parent=document.getElementById("show")
 
+        let cart=JSON.parse(localStorage.getItem("Acart"))
+        console.log(cart)
+        function showdata(){
+            cart.forEach((el) => {
+                let div=document.createElement("div");
+                let imgdiv=document.createElement("div");
+                let descdiv=document.createElement("div");
+                let img=document.createElement("img")
+                img.src=el.strMealThumb
+                imgdiv.append(img)
+                let name=document.createElement("p")
+                name.innerText=el.strMeal
+                let cat=document.createElement("p")
+                cat.innerText=el.strCategory
+                let price=document.createElement("p")
+                price.innerText=199;
+                
+                
+                div.append(imgdiv,name,cat,price)
+                parent.append(div)
+            });
+        }
+            
+        showdata()
+
+        function proceed(){
+            let one=alert("Your order is accepted")
+                setInterval(one,0)
+                let one1=alert("Your order is being cooked")
+            setInterval(one1,2000)
+            let one11=alert("Your order is ready")
+            setInterval(one11,8000)
+            let one111=alert(" Order out for delivery")
+            setInterval(one111,10000)
+            let one2=alert("order is delivered")
+            setInterval(one2,12000)
+        }
     </script>
 
 </html>
