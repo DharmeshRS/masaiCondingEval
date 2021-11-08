@@ -71,6 +71,9 @@
         if(res.error==false){
             alert("logged In Successful")
             window.location.href="index.html"
+        }if(res.error==true){
+            alert(res.message)
+           
         }
         
     })
