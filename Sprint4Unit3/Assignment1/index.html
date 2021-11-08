@@ -16,50 +16,71 @@
             padding-right: 100px;
             margin: auto;
         }
+        img{
+            width: 200px;
+        }
+        #displaydata {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap: 20px;
+        }
     </style>
 </head>
 <body>
     <div>
         <div class="navbar">
-            <div id="login">Login</div>
-            <div id="signup">SignUp</div>
-            <div id="menu">Menu</div>
-            <div id="cart">Cart</div>
+            <div id="login"><a href="login.html">Login</a></div>
+            <div id="signup"><a href="login.html">SignUp</a></div>
+            <div id="menu"><a href="login.html">Menu</a></div>
+            <div id="cart"><a href="login.html">Cart</a></div>
         </div>
         <hr>
+    </div>
+    <div>
+        <div id="displaydata"></div>
     </div>
 
 </body>
 <script>
-    let loginbutton=document.getElementById("login")
-    loginbutton.onclick=function(){
-        loginredirect()
-    }
-    let signupbutton=document.getElementById("signup")
-    loginbutton.onclick=function(){
-        signupredirect()
-    }
-    let menubutton=document.getElementById("menu")
-    loginbutton.onclick=function(){
-        menuredirect()
-    }
-    let cartbutton=document.getElementById("cart")
-    loginbutton.onclick=function(){
-        cartredirect()
-    }
-    
-    function loginredirect(){
-        document.location.href="login.html"
-    }
+    let parent=document.getElementById("displaydata")
+        async function displaymeal(){
+            let res=await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=chicken")
+            let data=await res.json()
+            showdata(data)
+        }
+        displaymeal()
 
-    function  signupredirect(){
-        document.location.href="signup.html"
-    }
-    function  menuredirect(){
-        document.location.href="menu.html"
-    }
-    function  cartredirect(){
-        document.location.href="cart.html"
-    }
+        function showdata(data){
+            // data.forEach(() => {
+            //     console.log(meals)
+            // });
+            let info=data.meals
+            info.forEach((el) => {
+                console.log(el)
+                let div=document.createElement("div");
+                let imgdiv=document.createElement("div");
+                let descdiv=document.createElement("div");
+                let img=document.createElement("img")
+                img.src=el.strMealThumb
+                imgdiv.append(img)
+                let name=document.createElement("p")
+                name.innerText=el.strMeal
+                let cat=document.createElement("p")
+                cat.innerText=el.strCategory
+                let price=document.createElement("p")
+                price.innerText=199;
+                let addtocartbutton=document.createElement("button")
+                addtocartbutton.innerText="Add to Cart"
+                addtocartbutton.onclick=function(){
+                    addtocartfunction()
+                }
+                div.append(imgdiv,name,cat,price,addtocartbutton)
+                parent.append(div)
+            });
+        }
+
+        function addtocartfunction(){
+
+        }
 </script>
 </html>
