@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .navbar{
+            font-size: larger;
+            font-weight: bolder;
+            display: flex;
+            
+        }
+        .navbar >div{
+            padding-right: 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <div id="login">Login</div>
+            <div id="signup">SignUp</div>
+            <div id="menu">Menu</div>
+            <div id="cart">Cart</div>
+        </div>
+        <hr>
+    </div>
+
+</body>
+<script>
+    let loginbutton=document.getElementById("login")
+    loginbutton.onclick=function(){
+        loginredirect()
+    }
+    let signupbutton=document.getElementById("signup")
+    loginbutton.onclick=function(){
+        signupredirect()
+    }
+    let menubutton=document.getElementById("menu")
+    loginbutton.onclick=function(){
+        menuredirect()
+    }
+    let cartbutton=document.getElementById("cart")
+    loginbutton.onclick=function(){
+        cartredirect()
+    }
+    
+    function loginredirect(){
+        document.location.href="login.html"
+    }
+
+    function  signupredirect(){
+        document.location.href="signup.html"
+    }
+    function  menuredirect(){
+        document.location.href="menu.html"
+    }
+    function  cartredirect(){
+        document.location.href="cart.html"
+    }
+</script>
+</html>
