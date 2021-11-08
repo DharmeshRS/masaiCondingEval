@@ -72,15 +72,20 @@
                 let addtocartbutton=document.createElement("button")
                 addtocartbutton.innerText="Add to Cart"
                 addtocartbutton.onclick=function(){
-                    addtocartfunction()
+                    addtocartfunction(el)
                 }
                 div.append(imgdiv,name,cat,price,addtocartbutton)
                 parent.append(div)
             });
         }
-
-        function addtocartfunction(){
-
+        if(localStorage.getItem("Acart")==null){
+            localStorage.setItem("Acart",JSON.stringify([]))
+        }
+        function addtocartfunction(p){
+           let foodcart=JSON.parse(localStorage.getItem("Acart"))
+           foodcart.push(p)
+           localStorage.setItem("Acart",JSON.stringify(foodcart))
+           alert("Item Added Into Cart")
         }
 </script>
 </html>
