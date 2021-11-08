@@ -21,46 +21,29 @@
 <body>
     <div>
         <div class="navbar">
-            <div id="login">Login</div>
-            <div id="signup">SignUp</div>
-            <div id="menu">Menu</div>
-            <div id="cart">Cart</div>
+            <div id="login"><a href="login.html">Login</a></div>
+            <div id="signup"><a href="signup.html">SignUp</a></div>
+            <div id="menu"><a href="index.html">Menu</a></div>
+            <div id="cart"><a href="cart.html">Cart</a></div>
         </div>
         <hr>
     </div>
+    <div>
+        <h1>Login</h1>
+        <div>
+            <form action="" onsubmit="login()">
+                <label for="">Username</label>
+                <input type="text" id="username"><br>
+                <label for="">Password</label>
+                <input type="text" id="password"><br>
 
-</body>
-<script>
-    let loginbutton=document.getElementById("login")
-    loginbutton.onclick=function(){
-        loginredirect()
-    }
-    let signupbutton=document.getElementById("signup")
-    loginbutton.onclick=function(){
-        signupredirect()
-    }
-    let menubutton=document.getElementById("menu")
-    loginbutton.onclick=function(){
-        menuredirect()
-    }
-    let cartbutton=document.getElementById("cart")
-    loginbutton.onclick=function(){
-        cartredirect()
-    }
-    
-    function loginredirect(){
-        document.location.href="login.html"
-    }
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+    </body>
+    <script>
 
-    function  signupredirect(){
-        document.location.href="signup.html"
-    }
-    function  menuredirect(){
-        document.location.href="menu.html"
-    }
-    function  cartredirect(){
-        document.location.href="cart.html"
-    }
-</script>
+    </script>
+
 </html>
-<h1>Login</h1>

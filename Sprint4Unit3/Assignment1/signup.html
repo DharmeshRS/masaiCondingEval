@@ -16,31 +16,61 @@
             padding-right: 100px;
             margin: auto;
         }
+        label{
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <div>
         <div class="navbar">
-            <div id="login">Login</div>
-            <div id="signup">SignUp</div>
-            <div id="menu">Menu</div>
-            <div id="cart">Cart</div>
+            <div id="login"><a href="login.html">Login</a></div>
+            <div id="signup"><a href="signup.html">SignUp</a></div>
+            <div id="menu"><a href="index.html">Menu</a></div>
+            <div id="cart"><a href="cart.html">Cart</a></div>
         </div>
         <hr>
     </div>
 
+
+    <div>
+        
+        <div>
+            <h1>Sign Up</h1>
+            <div>
+                <form action="" onsubmit="register()" id="signup_form">
+                    <label for="">name</label>
+                    <input type="text" id="name"><br>
+                    <label for="">email</label>
+                    <input type="email" id="email"><br>
+                    <label for="">Password</label>
+                    <input type="text" id="password"><br>
+                    <label for="">Username</label>
+                    <input type="text" id="username"><br>
+                    <label for="">mobile</label>
+                    <input type="text" id="mobile"><br>
+                    <label for="">Description</label>
+                    <input type="text" id="description"><br>
+    
+                    <button>register</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
-    let loginbutton=document.getElementById("login")
-    loginbutton.onclick=function(){
-        window.location.href="login.html"
-    }
-     
-    let signup=document.getElementById("signup")
-    signup.onclick=function(){
-        window.location.href="signup.html"
-    }
-    
+    let signupform=document.getElementById("signup_form")
+    let user_data={
+        name:signupform.name.value,
+        email:signupform.email.value,
+        password:signupform.password.value,
+        username:signupform.username.value,
+        mobile:signupform.mobile.value,
+        description:signupform.description.value
+
+    };
+    console.log()
+
     
 </script>
 </html>
