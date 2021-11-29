@@ -4,8 +4,8 @@ const jobSchema=new mongoose.Schema({
     company_name:String,
     city:String,
     skill:String,
-    job_type:String,
-    notice_period:String,
+    jobtype:String,
+    noticeperiod:String,
     rating:Number,
     openings:Number
 

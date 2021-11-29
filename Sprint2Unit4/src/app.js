@@ -23,54 +23,59 @@ app.post("/",async (req,res)=>{
 app.get("/jobs",async (req,res)=>{
     try{
         const alljobs=await Job.find()
-        res.send(alljobs)
+        res.status(201).send(alljobs)
     }catch(err){
-        res.send(err)
+        res.status(400).send(err)
     }
 })
 
-app.get("/wfh",async (req,res)=>{
+app.get("/jobtype/wfh",async (req,res)=>{
     try{
         const whf=await Job.find({jobtype:"WFH"})
-        res.send(whf)
+        res.status(201).send(whf)
     }catch(err){
-        res.send(err)
+        res.status(400).send(err)
     }
 })
 
 
-app.get("/period/:period",async (req,res)=>{
+app.get("/period/:noticeperiod",async (req,res)=>{
     try{
-        const data=await Job.find()
-        res.send("get for all data of notice period")
+        const data=await Job.find({noticeperiod:req.params.noticeperiod})
+        res.status(201).send(data)
     }catch(err){
-        res.send(err)
+        res.status(400).send(err)
     }
 })
 
-app.get("/companyname",async (req,res)=>{
+app.get("/company/:companyname",async (req,res)=>{
     try{
-        res.send("company data")
+        const companydata=await Job.findOne({companyname:req.params.companyname})
+        res.status(201).send(companydata)
     }catch(err){
-        res.send(err)
+        res.status(401).send(err)
     }
 })
 
-app.get("/sort/rating",async (req,res)=>{
+app.get("/filter/rating",async (req,res)=>{
     try{
-        res.send("get for all data method")
+        const sortdata=await Job.find().sort({rating:-1})
+        res.status(201).send(sortdata)
+       
     }catch(err){
-        res.send(err)
+        res.status(400).send(err)
     }
-    })
+})
 
 app.get("/most_openings/",async (req,res)=>{
     try{
-        res.send("get for all data method")
+        const sortdata=await Job.find().sort({openings:-1})
+        res.status(201).send(sortdata)
+       
     }catch(err){
-        res.send(err)
+        res.status(400).send(err)
     }
-    })
+})
 
 app.listen(port,()=>{
     console.log(`listening on port ${port}`)
