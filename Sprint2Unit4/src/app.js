@@ -8,6 +8,7 @@ const app=express()
 const port=3000;
 app.use(express.json())
 
+// post jobs
 app.post("/",async (req,res)=>{
     try{
         console.log(req.body)
@@ -19,7 +20,7 @@ app.post("/",async (req,res)=>{
     }
 })
 
-
+//get all jobs
 app.get("/jobs",async (req,res)=>{
     try{
         const alljobs=await Job.find()
@@ -29,6 +30,7 @@ app.get("/jobs",async (req,res)=>{
     }
 })
 
+//job type work from home
 app.get("/jobtype/wfh",async (req,res)=>{
     try{
         const whf=await Job.find({jobtype:"WFH"})
@@ -38,7 +40,7 @@ app.get("/jobtype/wfh",async (req,res)=>{
     }
 })
 
-
+//notice period 
 app.get("/period/:noticeperiod",async (req,res)=>{
     try{
         const data=await Job.find({noticeperiod:req.params.noticeperiod})
@@ -48,6 +50,8 @@ app.get("/period/:noticeperiod",async (req,res)=>{
     }
 })
 
+
+//company data
 app.get("/company/:companyname",async (req,res)=>{
     try{
         const companydata=await Job.findOne({companyname:req.params.companyname})
@@ -57,16 +61,19 @@ app.get("/company/:companyname",async (req,res)=>{
     }
 })
 
-app.get("/filter/rating",async (req,res)=>{
+//rating
+app.get("/rating",async (req,res)=>{
     try{
         const sortdata=await Job.find().sort({rating:-1})
-        res.status(201).send(sortdata)
+        res.send(sortdata)
        
     }catch(err){
         res.status(400).send(err)
     }
 })
 
+
+//most openings using descending 
 app.get("/most_openings/",async (req,res)=>{
     try{
         const sortdata=await Job.find().sort({openings:-1})
